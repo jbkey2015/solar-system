@@ -3,3 +3,11 @@
 body {
   background-color: blue;
 }
+
+#planet-container {
+  display: flex;
+  flex-grow: row wrap;
+  display: grid;  
+  grid-template-rows: 385px 385px 385px;
+  grid-template-columns: 500px 500px 500px;
+}
