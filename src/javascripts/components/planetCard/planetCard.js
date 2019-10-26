@@ -1,4 +1,4 @@
-
+import $ from 'jquery';
 import './planetCard.scss';
 
 import util from '../../helpers/utlities';
@@ -9,22 +9,30 @@ const createPlanetCard = () => {
   const planet = data.getPlanets();
   let domString = '';
   for (let i = 0; i < planet.length; i += 1) {
-    domString += `
-    <div class="container" style="width:20rem; height:20rem;">
-      <div class="card" style="width: 20rem; height: 20rem;">
-        <div class="card-body">
-          <h4 class="text">${planet[i].name}</h4>
-        </div>
-        <div class="overlay">
-          <img src="${planet[i].imageUrl}" alt="Avatar" class="image">
-        </div>
-      </div>
-    </div>
-    `;
+    domString += '<div class="card" style="width: 18rem;">';
+    domString += `<img src="${planet[i].imageUrl}" class="card-img-top" alt="...">`;
+    domString += '<div class="card-body">';
+    domString += `<p class="card-text">${planet[i].name}</p>`;
+    domString += '</div>';
+    domString += '</div>';
   }
-
   util.printToDom('planet-container', domString);
 };
 
+const planetListEvents = () => {
+  $('body').on('mouseenter', '.card', (e) => {
+    $(e.target).children().removeClass('hide');
+  });
 
-export default { createPlanetCard };
+  $('body').on('mouseleave', '.card', (e) => {
+    $(e.target).children().addClass('hide');
+  });
+
+  $('body').on('click', '.card', () => {
+    util.printToDom('planet-container', '');
+    util.printToDom('description-container', '.descript');
+  });
+};
+
+
+export default { createPlanetCard, planetListEvents };
