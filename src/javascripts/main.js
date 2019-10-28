@@ -4,8 +4,8 @@ import '../styles/main.scss';
 import list from './components/planetCard/planetCard';
 
 const init = () => {
-  list.createPlanetList();
-  list.hoverFunc();
+  list.createPlanetCard();
+  list.hoverPlanets();
 };
 
 init();

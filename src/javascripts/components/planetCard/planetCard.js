@@ -5,16 +5,16 @@ import util from '../../helpers/utlities';
 import data from '../../helpers/data/planets';
 
 
-const createPlanetList = () => {
-  const planetList = data.getPlanets();
+const createPlanetCard = () => {
+  const planetCard = data.getPlanets();
   let domString = '';
-  for (let i = 0; i < planetList.length; i += 1) {
-    const name = planetList[i].name.toLowerCase();
+  for (let i = 0; i < planetCard.length; i += 1) {
+    const name = planetCard[i].name.toLowerCase();
     domString += `
-      <div class="col-4 planets ${name} ${planetList[i].description}" style="width:20rem; height:20rem;">
-        <div class="card-body planet-list" id="${planetList[i].name}" style="width: 20rem; height: 20rem;">
-          <h4 class="text">${planetList[i].name}</h4>
-          <img src="${planetList[i].imageUrl}" class="image">
+      <div class="col-4 planets ${name} ${planetCard[i].description}" style="width:20rem; height:20rem;">
+        <div class="card-body planet-list" id="${planetCard[i].name}" style="width: 20rem; height: 20rem;">
+          <h4 class="text">${planetCard[i].name}</h4>
+          <img src="${planetCard[i].imageUrl}" class="image">
           </div>
       </div>
       `;
@@ -23,7 +23,7 @@ const createPlanetList = () => {
   $('.image').hide();
 };
 
-const hoverFunc = () => {
+const hoverPlanets = () => {
   $('.card-body').mouseenter((e) => {
     const singleCard = $(e.target);
     singleCard.find('.image').show();
@@ -35,4 +35,4 @@ const hoverFunc = () => {
   });
 };
 
-export default { createPlanetList, hoverFunc };
+export default { createPlanetCard, hoverPlanets };
