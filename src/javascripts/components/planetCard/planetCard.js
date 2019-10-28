@@ -5,34 +5,34 @@ import util from '../../helpers/utlities';
 import data from '../../helpers/data/planets';
 
 
-const createPlanetCard = () => {
-  const planet = data.getPlanets();
+const createPlanetList = () => {
+  const planetList = data.getPlanets();
   let domString = '';
-  for (let i = 0; i < planet.length; i += 1) {
-    domString += '<div class="card" style="width: 18rem;">';
-    domString += `<img src="${planet[i].imageUrl}" class="card-img-top" alt="...">`;
-    domString += '<div class="card-body">';
-    domString += `<p class="card-text">${planet[i].name}</p>`;
-    domString += '</div>';
-    domString += '</div>';
+  for (let i = 0; i < planetList.length; i += 1) {
+    const name = planetList[i].name.toLowerCase();
+    domString += `
+      <div class="col-4 planets ${name} ${planetList[i].description}" style="width:20rem; height:20rem;">
+        <div class="card-body planet-list" id="${planetList[i].name}" style="width: 20rem; height: 20rem;">
+          <h4 class="text">${planetList[i].name}</h4>
+          <img src="${planetList[i].imageUrl}" class="image">
+          </div>
+      </div>
+      `;
   }
   util.printToDom('planet-container', domString);
+  $('.image').hide();
 };
 
-const planetListEvents = () => {
-  $('body').on('mouseenter', '.card', (e) => {
-    $(e.target).children().removeClass('hide');
-  });
-
-  $('body').on('mouseleave', '.card', (e) => {
-    $(e.target).children().addClass('hide');
-  });
-
-  $('body').on('click', '.card', () => {
-    util.printToDom('planet-container', '');
-    util.printToDom('description-container', '.descript');
+const hoverFunc = () => {
+  $('.card-body').mouseenter((e) => {
+    const singleCard = $(e.target);
+    singleCard.find('.image').show();
+    singleCard.find('.text').hide();
+  }); $('.card-body').mouseleave((e) => {
+    const singleCard = $(e.target);
+    singleCard.find('.image').hide();
+    singleCard.find('.text').show();
   });
 };
 
-
-export default { createPlanetCard, planetListEvents };
+export default { createPlanetList, hoverFunc };

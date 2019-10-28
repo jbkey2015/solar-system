@@ -1,10 +1,33 @@
-#planet-container {
-  .card {
-    margin: 15px 0;
-    height: 70px;
-  }
+  
+.planets {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
 
-  .hide{
-    display: none;
+.card-body {
+  background-color: black;
+  display: grid;
+  *{pointer-events: none;}
+
+  img, h4{
+    grid-column: 1;
+    grid-row: 1;
   }
 }
+
+img {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+  }
+
+  h4 {
+    padding-top: 45%;
+  }
+  
+
+  .text {
+    color: white;
+    font-size: 20px;
+    text-align: center;
+  }
