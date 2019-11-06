@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Solar System</title>
 </head>
+
 <body>
-  <div id="search-container"></div>
+  <div id="searchForm">
+    <div class="container">
+        <form class="form-row">
+          <div class="col">
+            <input id="myInput" class="form-control" type="search" placeholder="Search Planet">
+          </div>
+        </form>
+    </div>
+  </div>
+  <div class="container" id='single-planet-card'></div>
   <div id='planet-container'></div>
-  <div id='single-planet-card'></div>
 </body>
+
 </html>
